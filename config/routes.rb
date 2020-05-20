@@ -1,10 +1,9 @@
 Rails.application.routes.draw do
-  get 'home/top'
-  get 'home/tos'
-  get 'home/description'
-  get 'items/index'
-  get 'items/show'
-  get 'designs/index'
-  get 'turnips/index'
+  root to: "home#top"
+  get "tos" => "home#tos"
+  get "description" => "home#description"
+  resources :items, only: [:index, :show]
+  resources :designs, only: [:index]
+  resources :turnips, only: [:index]
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
