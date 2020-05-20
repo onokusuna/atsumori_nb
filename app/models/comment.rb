@@ -3,4 +3,6 @@ class Comment < ApplicationRecord
   validates :want,    length: { maximum: 100 }
   validates :reward,  length: { maximum: 100 }
   validates :contact, length: { maximum: 200 }
+
+  belongs_to :item
 end

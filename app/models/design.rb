@@ -4,4 +4,6 @@ class Design < ApplicationRecord
   validates :id_image, presence: true
   validates :genre,    presence: true
   validates :theme,    presence: true
+
+  has_many :likes
 end
