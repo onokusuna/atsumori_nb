@@ -1,15 +1,21 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <meta charset="UTF-8">
     <title>AtsumoriNb</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <link rel="stylesheet" href="css/style.css" media="screen"> <!-- メディアクエリ -->
   </head>
 
   <body>
+    <div class="notice">
+      <p class="notice-success"><%= flash[:success] %></p>
+      <p class="notice-danger"><%= flash[:danger] %></p>
+    </div>
     <%= yield %>
   </body>
 </html>
