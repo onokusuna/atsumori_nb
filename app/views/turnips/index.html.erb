@@ -11,19 +11,19 @@
 	  	  </tr>
 	      <tr>
 	      	<td><%= f.label :price, "カブ価" %></td>
-	        <td><%= f.text_field :price %></td>
+	        <td><%= f.number_field :price %></td>
 	      </tr>
 	      <tr>
-	      	<td><%= f.label :password, "パスワード" %></td>
-	        <td><%= f.text_field :password %></td>
+	      	<td><%= f.label :islandpass, "パスワード" %></td>
+	        <td><%= f.text_field :islandpass %></td>
 	      </tr>
 	      <tr>
-	        <td><%= f.label :strated_at, "開放時間目安" %></td>
-	        <td></td>
+	        <td><%= f.label :started_at, "開放時間目安" %></td>
+	        <td><%= f.time_select :started_at %>〜<%= f.time_select :finished_at %></td>
 	      </tr>
 	      <tr>
 	        <td><%= f.label :want, "求む" %></td>
-	        <td><%= f.text_area :want %></td>
+	        <td><%= f.text_area :want, value: @request %></td>
 	      </tr>
 	      <tr>
 			<td><%= f.submit "投稿" %></td>
@@ -35,7 +35,30 @@
   </section>
   <% @turnips.each do |turnip| %>
     <div class="turnip-contents-box">
- 	
+ 	  <table>
+ 	  	<tbody>
+ 	  	  <tr>
+ 	  	  	<td>島名</td>
+ 	  	  	<td><%= turnip.name %></td>
+ 	  	  </tr>
+ 	  	  <tr>
+ 	  	  	<td>カブ価</td>
+ 	  	  	<td><%= turnip.price %></td>
+ 	  	  </tr>
+ 	  	  <tr>
+ 	  	  	<td>パスワード</td>
+ 	  	  	<td><%= turnip.islandpass %></td>
+ 	  	  </tr>
+ 	  	  <tr>
+ 	  	  	<td>開放時間目安</td>
+ 	  	  	<td><%= turnip.started_at.strftime("%H時%M分") %>〜<%= turnip.finished_at.strftime("%H時%M分") %></td>
+ 	  	  </tr>
+ 	  	  <tr>
+ 	  	  	<td>求む</td>
+ 	  	  	<td><%= turnip.want %></td>
+ 	  	  </tr>
+ 	  	</tbody>
+ 	  </table>
     </div>
   <% end %>
 </div>

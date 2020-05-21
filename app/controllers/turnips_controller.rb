@@ -1,22 +1,23 @@
 class TurnipsController < ApplicationController
   def index
-  	@turnips = Turnip.all
+  	@turnips = Turnip.all.reverse_order
   	@turnip = Turnip.new
+  	@request = "お願い"
   end
 
   def create
-  	@turnip = Turnip.new
+  	@turnip = Turnip.new(turnip_params)
   	if @turnip.save
-  	   redirect_to turnips_path, notice: '投稿に成功しました'
+  	   redirect_to turnips_path, success: '投稿に成功しました'
   	else
   	   @turnips = Turnip.all
-  	   flash.now[:notice] = '投稿に失敗しました'
+  	   flash.now[:danger] = '投稿に失敗しました'
   	   render :index
   	end
   end
 
   private
   	def turnip_params
-      params.require(:turnip).permit(:name, :price, :password, :want)
+      params.require(:turnip).permit(:name, :price, :islandpass, :started_at, :finished_at, :want)
     end
 end

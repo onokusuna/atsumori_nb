@@ -1,5 +1,5 @@
 class Item < ApplicationRecord
-  validates :name,   presence: true, length: { maximum: 10 }
+  validates :name,   presence: true, length: { maximum: 11 }
   validates :want,   presence: true, length: { in: 3..100 }
   validates :reward, presence: true, length: { in: 3..100 }
 

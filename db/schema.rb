@@ -48,7 +48,7 @@ ActiveRecord::Schema.define(version: 2020_05_19_145557) do
   create_table "turnips", force: :cascade do |t|
     t.string "name", null: false
     t.integer "price", null: false
-    t.string "password", null: false
+    t.string "islandpass", null: false
     t.text "want", null: false
     t.time "started_at", null: false
     t.time "finished_at", null: false
