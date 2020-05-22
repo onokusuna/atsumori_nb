@@ -1,5 +1,13 @@
 <!-- あつまれどうぶつの森カブ価掲示板 -->
 <div class="turnip">
+  <% if @turnip.errors.any? %>
+    <%= pluralize(@turnip.errors.count,"error") %>
+      <ul>
+      	<% @turnip.errors.full_messages.each do |msg| %>
+      	  <li><%= msg %></li>
+    	<% end %>
+      </ul>
+  <% end %>
   <section class="turnip-contents">
     <div class="turnip-contents-form">
 	  <%= form_for(@turnip) do |f| %>
