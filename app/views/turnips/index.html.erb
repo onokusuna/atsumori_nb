@@ -2,7 +2,7 @@
 <div class="turnip">
   <!-- エラーメッセージ表示 -->
   <% if @turnip.errors.any? %>
-    <%= pluralize(@turnip.errors.count,"error") %>
+    <p><%= pluralize(@turnip.errors.count,"error", "") %>個のエラーが発生しました</p>
       <ul>
       	<% @turnip.errors.full_messages.each do |msg| %>
       	  <li><%= msg %></li>
@@ -63,12 +63,12 @@
  	  	  <!-- 島名 -->
  	  	  <tr class="turnip-contents-box-tr">
  	  	  	<td class="turnip-contents-box-td">島名</td>
- 	  	  	<td class="turnip-contents-box-td"><%= turnip.name %></td>
+ 	  	  	<td class="turnip-contents-box-td"><%= turnip.name %>島</td>
  	  	  </tr>
  	  	  <!-- カブ価 -->
  	  	  <tr class="turnip-contents-box-tr">
  	  	  	<td class="turnip-contents-box-td">カブ価</td>
- 	  	  	<td class="turnip-contents-box-td"><%= turnip.price %></td>
+ 	  	  	<td class="turnip-contents-box-td"><%= turnip.price %>ベル</td>
  	  	  </tr>
  	  	  <!-- 島パスワード -->
  	  	  <tr class="turnip-contents-box-tr">

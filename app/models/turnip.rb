@@ -2,7 +2,7 @@ class Turnip < ApplicationRecord
   validates :name,        presence: true, length: { maximum: 10 }
   validates :price,       length: { in: 2..3 }
   validates :islandpass,  length: { is: 5 }
-  validates :want,        length: { in: 3..100 }
+  validates :want,        length: { in: 5..100 }
   validates :started_at,  presence: true
   validates :finished_at, presence: true
   # 自作バリデーション 現在時間よりも早いものは登録できない
