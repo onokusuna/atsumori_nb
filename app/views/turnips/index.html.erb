@@ -18,19 +18,19 @@
 	  	  <!-- 島名 -->
 	  	  <tr class="turnip-contents-form-tr">
 	  	  	<td class="turnip-contents-form-td"><%= f.label :name, "島名" %></td>
-	  	    <td class="turnip-contents-form-td"><%= f.text_field :name %></td>
+	  	    <td class="turnip-contents-form-td"><%= f.text_field :name, :placeholder => "10文字以内" %></td>
  	  	  	<td class="turnip-contents-form-td">島</td>
 	  	  </tr>
 	  	  <!-- カブ価 -->
 	      <tr class="turnip-contents-form-tr">
 	      	<td class="turnip-contents-form-td"><%= f.label :price, "カブ価" %></td>
-	        <td class="turnip-contents-form-td"><%= f.number_field :price %></td>
+	        <td class="turnip-contents-form-td"><%= f.number_field :price, :placeholder => "半角で入力" %></td>
  	  	  	<td class="turnip-contents-form-td">ベル</td>
 	      </tr>
 	      <!-- 島パスワード -->
 	      <tr class="turnip-contents-form-tr">
 	      	<td class="turnip-contents-form-td"><%= f.label :islandpass, "島パスワード" %></td>
-	        <td class="turnip-contents-form-td"><%= f.text_field :islandpass %></td>
+	        <td class="turnip-contents-form-td"><%= f.text_field :islandpass, :placeholder => "英数字5文字" %></td>
 	      </tr>
 	      <!-- 開放目安時間 -->
 	      <tr class="turnip-contents-form-tr">
@@ -44,7 +44,7 @@
 	      <tr class="turnip-contents-form-tr">
 	        <td class="turnip-contents-form-td"><%= f.label :want, "求む" %></td>
 	        <!-- セルを結合して、開放時間目安の終了時刻のtdに合わせてある -->
-	        <td class="turnip-contents-form-td" colspan="3"><%= f.text_area :want, value: @request %></td>
+	        <td class="turnip-contents-form-td" colspan="3"><%= f.text_area :want, :placeholder => "例）マイル旅行券x1\n◯◯の前で受け取りを行なっています。先払い&往復ごとにお願いします。\nお帰りの際は-ボタンでお願いします。" %></td>
 	      </tr>
 	      <!-- 投稿ボタン -->
 	      <tr class="turnip-contents-form-tr">
@@ -85,7 +85,7 @@
  	  	  	<td class="turnip-contents-box-td">求む</td>
  	  	  	<td class="turnip-contents-box-td"><%= turnip.want %></td>
  	  	  </tr>
- 	  	  <!-- 投稿時間 -->欄
+ 	  	  <!-- 投稿時間 -->
  	  	  <tr>
  	  	  	<td></td>
  	  	  	<td><%= time_ago_in_words(turnip.created_at) %>前</td>
