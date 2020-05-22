@@ -35,6 +35,7 @@
 	      <!-- 開放目安時間 -->
 	      <tr class="turnip-contents-form-tr">
 	        <td class="turnip-contents-form-td"><%= f.label :started_at, "開放時間目安" %></td>
+	        <!-- 5分刻み -->
 	        <td class="turnip-contents-form-td"><%= f.time_select :started_at, :minute_step => 5 %></td>
 	        <td class="turnip-contents-form-td">〜</td>
 	        <td class="turnip-contents-form-td"><%= f.time_select :finished_at, :minute_step => 5 %></td>
@@ -56,28 +57,35 @@
   </section>
   <% @turnips.each do |turnip| %>
     <div class="turnip-contents-box">
+      <!-- 投稿表示 -->
  	  <table class="turnip-contents-box-table">
  	  	<tbody class="turnip-contents-box-tbody">
+ 	  	  <!-- 島名 -->
  	  	  <tr class="turnip-contents-box-tr">
  	  	  	<td class="turnip-contents-box-td">島名</td>
  	  	  	<td class="turnip-contents-box-td"><%= turnip.name %></td>
  	  	  </tr>
+ 	  	  <!-- カブ価 -->
  	  	  <tr class="turnip-contents-box-tr">
  	  	  	<td class="turnip-contents-box-td">カブ価</td>
  	  	  	<td class="turnip-contents-box-td"><%= turnip.price %></td>
  	  	  </tr>
+ 	  	  <!-- 島パスワード -->
  	  	  <tr class="turnip-contents-box-tr">
  	  	  	<td class="turnip-contents-box-td">島パスワード</td>
  	  	  	<td class="turnip-contents-box-td"><%= turnip.islandpass %></td>
  	  	  </tr>
+ 	  	  <!-- 開放時間目安 -->
  	  	  <tr class="turnip-contents-box-tr">
  	  	  	<td class="turnip-contents-box-td">開放時間目安</td>
  	  	  	<td class="turnip-contents-box-td"><%= turnip.started_at.strftime("%H時%M分") %>〜<%= turnip.finished_at.strftime("%H時%M分") %></td>
  	  	  </tr>
+ 	  	  <!-- 求む -->
  	  	  <tr class="turnip-contents-box-tr">
  	  	  	<td class="turnip-contents-box-td">求む</td>
  	  	  	<td class="turnip-contents-box-td"><%= turnip.want %></td>
  	  	  </tr>
+ 	  	  <!-- 投稿時間 -->欄
  	  	  <tr>
  	  	  	<td></td>
  	  	  	<td><%= time_ago_in_words(turnip.created_at) %>前</td>
