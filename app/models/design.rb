@@ -6,4 +6,7 @@ class Design < ApplicationRecord
   validates :theme,    presence: true
 
   has_many :likes
+
+  attachment :id_image
+  attachment :sample_image
 end

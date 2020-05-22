@@ -1,2 +1,104 @@
-<h1>Designs#index</h1>
+<!-- あつまれどうぶつの森マイデザイン掲示板 -->
+<div class="design">
+  <!-- エラーメッセージ表示 -->
+  <% if @design.errors.any? %>
+    <p><%= pluralize(@design.errors.count,"error", "") %>個のエラーが発生しました</p>
+      <ul>
+      	<% @design.errors.full_messages.each do |msg| %>
+      	  <li><%= msg %></li>
+    	<% end %>
+      </ul>
+  <% end %>
+  <section class="design-contents">
+  	<!-- 投稿フォーム -->
+    <div class="design-contents-form">
+	  <%= form_for(@design) do |f| %>
+	  <table class="design-contents-form-table">
+	  	<tbody class="design-contents-form-tbody">
+	  	  <!-- デザイン名 -->
+	  	  <tr class="design-contents-form-tr">
+	  	  	<td class="design-contents-form-td"><%= f.label :title, "デザイン名" %></td>
+	  	    <td class="design-contents-form-td"><%= f.text_field :title, :placeholder => "14文字以内" %></td>
+ 	  	  	<td class="design-contents-form-td">島</td>
+	  	  </tr>
+	  	  <!-- 島名 -->
+	  	  <tr class="design-contents-form-tr">
+	  	  	<td class="design-contents-form-td"><%= f.label :name, "投稿者名" %></td>
+	  	    <td class="design-contents-form-td"><%= f.text_field :name, :placeholder => "10文字以内" %></td>
+ 	  	  	<td class="design-contents-form-td">島</td>
+	  	  </tr>
+	  	  <!-- カブ価 -->
+	      <tr class="design-contents-form-tr">
+	      	<td class="design-contents-form-td"><%= f.attachment_field :id_image %></td>
+	        <td class="design-contents-form-td"><%= f.number_field :price, :placeholder => "半角で入力" %></td>
+ 	  	  	<td class="design-contents-form-td">ベル</td>
+	      </tr>
+	      <!-- 島パスワード -->
+	      <tr class="design-contents-form-tr">
+	      	<td class="design-contents-form-td"><%= f.label :islandpass, "島パスワード" %></td>
+	        <td class="design-contents-form-td"><%= f.text_field :islandpass, :placeholder => "英数字5文字" %></td>
+	      </tr>
+	      <!-- 開放目安時間 -->
+	      <tr class="design-contents-form-tr">
+	        <td class="design-contents-form-td"><%= f.label :started_at, "開放時間目安" %></td>
+	        <!-- 5分刻み -->
+	        <td class="design-contents-form-td"><%= f.time_select :started_at, :minute_step => 5 %></td>
+	        <td class="design-contents-form-td">〜</td>
+	        <td class="design-contents-form-td"><%= f.time_select :finished_at, :minute_step => 5 %></td>
+	      </tr>
+	      <!-- 求む -->
+	      <tr class="design-contents-form-tr">
+	        <td class="design-contents-form-td"><%= f.label :want, "求む" %></td>
+	        <!-- セルを結合して、開放時間目安の終了時刻のtdに合わせてある -->
+	        <td class="design-contents-form-td" colspan="3"><%= f.text_area :want, :placeholder => "例）マイル旅行券x1\n◯◯の前で受け取りを行なっています。先払い&往復ごとにお願いします。\nお帰りの際は-ボタンでお願いします。" %></td>
+	      </tr>
+	      <!-- 投稿ボタン -->
+	      <tr class="design-contents-form-tr">
+			<td class="design-contents-form-td"><%= f.submit "投稿" %></td>
+	      </tr>
+	    </tbody>
+	  </table>
+	  <% end %>
+    </div>
+  </section>
+  <% @designs.each do |design| %>
+    <div class="design-contents-box">
+      <!-- 投稿表示 -->
+ 	  <table class="design-contents-box-table">
+ 	  	<tbody class="design-contents-box-tbody">
+ 	  	  <!-- 島名 -->
+ 	  	  <tr class="design-contents-box-tr">
+ 	  	  	<td class="design-contents-box-td">島名</td>
+ 	  	  	<td class="design-contents-box-td"><%= design.name %>島</td>
+ 	  	  </tr>
+ 	  	  <!-- カブ価 -->
+ 	  	  <tr class="design-contents-box-tr">
+ 	  	  	<td class="design-contents-box-td">カブ価</td>
+ 	  	  	<td class="design-contents-box-td"><%= design.price %>ベル</td>
+ 	  	  </tr>
+ 	  	  <!-- 島パスワード -->
+ 	  	  <tr class="design-contents-box-tr">
+ 	  	  	<td class="design-contents-box-td">島パスワード</td>
+ 	  	  	<td class="design-contents-box-td"><%= design.islandpass %></td>
+ 	  	  </tr>
+ 	  	  <!-- 開放時間目安 -->
+ 	  	  <tr class="design-contents-box-tr">
+ 	  	  	<td class="design-contents-box-td">開放時間目安</td>
+ 	  	  	<td class="design-contents-box-td"><%= design.started_at.strftime("%H時%M分") %>〜<%= design.finished_at.strftime("%H時%M分") %></td>
+ 	  	  </tr>
+ 	  	  <!-- 求む -->
+ 	  	  <tr class="design-contents-box-tr">
+ 	  	  	<td class="design-contents-box-td">求む</td>
+ 	  	  	<td class="design-contents-box-td"><%= design.want %></td>
+ 	  	  </tr>
+ 	  	  <!-- 投稿時間 -->
+ 	  	  <tr>
+ 	  	  	<td></td>
+ 	  	  	<td><%= time_ago_in_words(design.created_at) %>前</td>
+ 	  	  </tr>
+ 	  	</tbody>
+ 	  </table>
+    </div>
+  <% end %>
+</div><h1>Designs#index</h1>
 <p>Find me in app/views/designs/index.html.erb</p>

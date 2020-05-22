@@ -24,8 +24,8 @@ ActiveRecord::Schema.define(version: 2020_05_19_145557) do
   create_table "designs", force: :cascade do |t|
     t.string "title", null: false
     t.string "name", null: false
-    t.string "id_image", null: false
-    t.string "sample_image"
+    t.string "id_image_id", null: false
+    t.string "sample_image_id"
     t.integer "genre", default: 0, null: false
     t.integer "theme", default: 0, null: false
     t.datetime "created_at", null: false
