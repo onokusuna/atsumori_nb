@@ -2,7 +2,7 @@ class TurnipsController < ApplicationController
   def index
   	@turnips = Turnip.all.reverse_order
   	@turnip = Turnip.new
-  	@request = "お願い"
+  	@request = "例）マイル旅行券x1\n◯◯の前で受け取りを行なっています。先払い&往復ごとにお願いします。\nお帰りの際は-ボタンでお願いします。"
   end
 
   def create
