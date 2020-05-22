@@ -1,0 +1,10 @@
+ja:
+  activerecord:
+    attributes:
+      turnip:
+        name: 島名
+        price: カブ価
+        islandpass: 島パスワード
+        want: 求む
+        started_at: 開放開始時刻
+        finished_at: 開放終了時刻

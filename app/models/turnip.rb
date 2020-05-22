@@ -9,7 +9,7 @@ class Turnip < ApplicationRecord
   validate  :time_not_before_now
 
   def time_not_before_now
-    errors.add(:started_at, "現在時刻より後の時刻を選択してください") if started_at.nil? || started_at < Time.current.ago(30.minutes)
-    errors.add(:finished_at, "現在時刻より後の時刻を選択してください") if finished_at.nil? || finished_at < Time.current
+    errors.add(:started_at, "は現在より後の時刻を選択してください") if started_at.nil? || started_at < Time.current.ago(30.minutes)
+    errors.add(:finished_at, "は現在より後の時刻を選択してください") if finished_at.nil? || finished_at < Time.current
   end
 end
