@@ -6,7 +6,10 @@ class Design < ApplicationRecord
   validates :theme,    presence: true
 
   has_many :likes
-
+  # gem'refile'用
   attachment :id_image
   attachment :sample_image
+  # セレクトボックス用データ
+  enum genre: { clothes: 0, road: 1, wallpaper: 2, floor: 3, other: 4 }
+  enum theme: { natural: 0, fancy: 1, sporty: 2, cool: 3, country: 4, pop: 5, oriental: 6, gorgeous: 7, modern: 8, old: 9, public: 10 }
 end
