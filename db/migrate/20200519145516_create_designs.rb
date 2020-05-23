@@ -6,7 +6,6 @@ class CreateDesigns < ActiveRecord::Migration[5.2]
       t.string :id_image_id,    null: false
       t.string :sample_image_id
       t.integer :genre,         null: false, default: 0
-      t.integer :theme,         null: false, default: 0
 
       t.timestamps
     end

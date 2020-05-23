@@ -38,17 +38,10 @@
 	      	<td class="design-contents-form-td"><%= f.label :sample_image %><span class="design-contents-form-td-span">※任意</td>
 	        <td class="design-contents-form-td"><%= f.attachment_field :sample_image %></td>
 	      </tr>
-	      <!-- 開放目安時間 -->
+	      <!-- ジャンル -->
 	      <tr class="design-contents-form-tr">
 	        <td class="design-contents-form-td"><%= f.label :genre %></td>
-	        <!-- 5分刻み -->
 	        <td class="design-contents-form-td"><%# f.time_select :started_at, :minute_step => 5 %></td>
-	      </tr>
-	      <!-- 求む -->
-	      <tr class="design-contents-form-tr">
-	        <td class="design-contents-form-td"><%= f.label :theme %></td>
-	        <!-- セルを結合して、開放時間目安の終了時刻のtdに合わせてある -->
-	        <td class="design-contents-form-td" colspan="3"><%# f.text_area :want %></td>
 	      </tr>
 	      <!-- 投稿ボタン -->
 	      <tr class="design-contents-form-tr">
