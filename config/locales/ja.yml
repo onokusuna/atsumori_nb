@@ -13,4 +13,4 @@ ja:
         name: 投稿者名
         id_image: ID画像
         sample_image: 着てみたor敷いてみた画像
-        genre: ジャンル
+        category: カテゴリー

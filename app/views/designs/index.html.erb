@@ -40,8 +40,8 @@
 	      </tr>
 	      <!-- ジャンル -->
 	      <tr class="design-contents-form-tr">
-	        <td class="design-contents-form-td"><%= f.label :genre %></td>
-	        <td class="design-contents-form-td"><%# f.time_select :started_at, :minute_step => 5 %></td>
+	        <td class="design-contents-form-td"><%= f.label :category %></td>
+	        <td class="design-contents-form-td"><%= f.select :category, Design.categories.keys.map, {} %></td>
 	      </tr>
 	      <!-- 投稿ボタン -->
 	      <tr class="design-contents-form-tr">
@@ -79,13 +79,8 @@
  	  	  </tr>
  	  	  <!-- ジャンル -->
  	  	  <tr class="design-contents-box-tr">
- 	  	  	<td class="design-contents-box-td">ジャンル</td>
- 	  	  	<td class="design-contents-box-td"><%= design.genre %></td>
- 	  	  </tr>
- 	  	  <!-- テーマ -->
- 	  	  <tr class="design-contents-box-tr">
- 	  	  	<td class="design-contents-box-td">テーマ</td>
- 	  	  	<td class="design-contents-box-td"><%= design.theme %></td>
+ 	  	  	<td class="design-contents-box-td">カテゴリー</td>
+ 	  	  	<td class="design-contents-box-td"><%= design.category %></td>
  	  	  </tr>
  	  	  <!-- 投稿時間 -->
  	  	  <tr>

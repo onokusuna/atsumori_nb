@@ -10,5 +10,5 @@ class Design < ApplicationRecord
   attachment :id_image
   attachment :sample_image
   # セレクトボックス用データ
-  enum genre: { clothes: 0, road: 1, wallpaper: 2, floor: 3, other: 4 }
+  enum category: { clothes: 0, road: 1, wallpaper: 2, floor: 3, other: 4 }
 end

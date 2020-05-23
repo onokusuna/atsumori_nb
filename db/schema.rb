@@ -26,7 +26,7 @@ ActiveRecord::Schema.define(version: 2020_05_19_145557) do
     t.string "name", null: false
     t.string "id_image_id", null: false
     t.string "sample_image_id"
-    t.integer "genre", default: 0, null: false
+    t.integer "category", default: 0, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
