@@ -2,7 +2,7 @@
 <div class="design">
   <!-- エラーメッセージ表示 -->
   <% if @design.errors.any? %>
-    <p><%= pluralize(@design.errors.count,"error", "") %>個のエラーが発生しました</p>
+    <p><%= pluralize(@design.errors.count,"error", "") %>個の入力エラーが発生しました</p>
       <ul>
       	<% @design.errors.full_messages.each do |msg| %>
       	  <li><%= msg %></li>
@@ -19,38 +19,36 @@
 	  	  <tr class="design-contents-form-tr">
 	  	  	<td class="design-contents-form-td"><%= f.label :title, "デザイン名" %></td>
 	  	    <td class="design-contents-form-td"><%= f.text_field :title, :placeholder => "14文字以内" %></td>
- 	  	  	<td class="design-contents-form-td">島</td>
+ 	  	  	<td class="design-contents-form-td"></td>
 	  	  </tr>
 	  	  <!-- 島名 -->
 	  	  <tr class="design-contents-form-tr">
 	  	  	<td class="design-contents-form-td"><%= f.label :name, "投稿者名" %></td>
 	  	    <td class="design-contents-form-td"><%= f.text_field :name, :placeholder => "10文字以内" %></td>
- 	  	  	<td class="design-contents-form-td">島</td>
+ 	  	  	<td class="design-contents-form-td"></td>
 	  	  </tr>
 	  	  <!-- カブ価 -->
 	      <tr class="design-contents-form-tr">
-	      	<td class="design-contents-form-td"><%= f.attachment_field :id_image %></td>
-	        <td class="design-contents-form-td"><%= f.number_field :price, :placeholder => "半角で入力" %></td>
- 	  	  	<td class="design-contents-form-td">ベル</td>
+	      	<td class="design-contents-form-td"><%= f.label :id_image %></td>
+	        <td class="design-contents-form-td"><%= f.attachment_field :id_image %></td>
+ 	  	  	<td class="design-contents-form-td"></td>
 	      </tr>
 	      <!-- 島パスワード -->
 	      <tr class="design-contents-form-tr">
-	      	<td class="design-contents-form-td"><%= f.label :islandpass, "島パスワード" %></td>
-	        <td class="design-contents-form-td"><%= f.text_field :islandpass, :placeholder => "英数字5文字" %></td>
+	      	<td class="design-contents-form-td"><%= f.label :sample_image %></td>
+	        <td class="design-contents-form-td"><%= f.attachment_field :sample_image %></td>
 	      </tr>
 	      <!-- 開放目安時間 -->
 	      <tr class="design-contents-form-tr">
-	        <td class="design-contents-form-td"><%= f.label :started_at, "開放時間目安" %></td>
+	        <td class="design-contents-form-td"><%= f.label :genre %></td>
 	        <!-- 5分刻み -->
-	        <td class="design-contents-form-td"><%= f.time_select :started_at, :minute_step => 5 %></td>
-	        <td class="design-contents-form-td">〜</td>
-	        <td class="design-contents-form-td"><%= f.time_select :finished_at, :minute_step => 5 %></td>
+	        <td class="design-contents-form-td"><%# f.time_select :started_at, :minute_step => 5 %></td>
 	      </tr>
 	      <!-- 求む -->
 	      <tr class="design-contents-form-tr">
-	        <td class="design-contents-form-td"><%= f.label :want, "求む" %></td>
+	        <td class="design-contents-form-td"><%= f.label :theme %></td>
 	        <!-- セルを結合して、開放時間目安の終了時刻のtdに合わせてある -->
-	        <td class="design-contents-form-td" colspan="3"><%= f.text_area :want, :placeholder => "例）マイル旅行券x1\n◯◯の前で受け取りを行なっています。先払い&往復ごとにお願いします。\nお帰りの際は-ボタンでお願いします。" %></td>
+	        <td class="design-contents-form-td" colspan="3"><%# f.text_area :want %></td>
 	      </tr>
 	      <!-- 投稿ボタン -->
 	      <tr class="design-contents-form-tr">
@@ -66,30 +64,35 @@
       <!-- 投稿表示 -->
  	  <table class="design-contents-box-table">
  	  	<tbody class="design-contents-box-tbody">
- 	  	  <!-- 島名 -->
+ 	  	  <!-- デザイン名 -->
  	  	  <tr class="design-contents-box-tr">
- 	  	  	<td class="design-contents-box-td">島名</td>
- 	  	  	<td class="design-contents-box-td"><%= design.name %>島</td>
+ 	  	  	<td class="design-contents-box-td">デザイン名</td>
+ 	  	  	<td class="design-contents-box-td"><%= design.title %></td>
  	  	  </tr>
- 	  	  <!-- カブ価 -->
+ 	  	  <!-- 投稿者名 -->
  	  	  <tr class="design-contents-box-tr">
- 	  	  	<td class="design-contents-box-td">カブ価</td>
- 	  	  	<td class="design-contents-box-td"><%= design.price %>ベル</td>
+ 	  	  	<td class="design-contents-box-td">>投稿者名</td>
+ 	  	  	<td class="design-contents-box-td"><%= design.name %></td>
  	  	  </tr>
- 	  	  <!-- 島パスワード -->
+ 	  	  <!-- ID画像 -->
  	  	  <tr class="design-contents-box-tr">
- 	  	  	<td class="design-contents-box-td">島パスワード</td>
- 	  	  	<td class="design-contents-box-td"><%= design.islandpass %></td>
+ 	  	  	<td class="design-contents-box-td">id_image</td>
+ 	  	  	<td class="design-contents-box-td"><%# design.id_image %></td>
  	  	  </tr>
- 	  	  <!-- 開放時間目安 -->
+ 	  	  <!-- サンプル画像 -->
  	  	  <tr class="design-contents-box-tr">
- 	  	  	<td class="design-contents-box-td">開放時間目安</td>
- 	  	  	<td class="design-contents-box-td"><%= design.started_at.strftime("%H時%M分") %>〜<%= design.finished_at.strftime("%H時%M分") %></td>
+ 	  	  	<td class="design-contents-box-td">sample_image</td>
+ 	  	  	<td class="design-contents-box-td"><%# design.sample_image %></td>
  	  	  </tr>
- 	  	  <!-- 求む -->
+ 	  	  <!-- ジャンル -->
  	  	  <tr class="design-contents-box-tr">
- 	  	  	<td class="design-contents-box-td">求む</td>
- 	  	  	<td class="design-contents-box-td"><%= design.want %></td>
+ 	  	  	<td class="design-contents-box-td">ジャンル</td>
+ 	  	  	<td class="design-contents-box-td"><%= design.genre %></td>
+ 	  	  </tr>
+ 	  	  <!-- テーマ -->
+ 	  	  <tr class="design-contents-box-tr">
+ 	  	  	<td class="design-contents-box-td">テーマ</td>
+ 	  	  	<td class="design-contents-box-td"><%= design.theme %></td>
  	  	  </tr>
  	  	  <!-- 投稿時間 -->
  	  	  <tr>
