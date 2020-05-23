@@ -27,15 +27,15 @@
 	  	    <td class="design-contents-form-td"><%= f.text_field :name, :placeholder => "10文字以内" %></td>
  	  	  	<td class="design-contents-form-td"></td>
 	  	  </tr>
-	  	  <!-- カブ価 -->
+	  	  <!-- ID画像 -->
 	      <tr class="design-contents-form-tr">
-	      	<td class="design-contents-form-td"><%= f.label :id_image %></td>
+	      	<td class="design-contents-form-td"><%= f.label :id_image %></span></td>
 	        <td class="design-contents-form-td"><%= f.attachment_field :id_image %></td>
  	  	  	<td class="design-contents-form-td"></td>
 	      </tr>
-	      <!-- 島パスワード -->
+	      <!-- サンプル画像 -->
 	      <tr class="design-contents-form-tr">
-	      	<td class="design-contents-form-td"><%= f.label :sample_image %></td>
+	      	<td class="design-contents-form-td"><%= f.label :sample_image %><span class="design-contents-form-td-span">※任意</td>
 	        <td class="design-contents-form-td"><%= f.attachment_field :sample_image %></td>
 	      </tr>
 	      <!-- 開放目安時間 -->
