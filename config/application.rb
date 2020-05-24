@@ -17,5 +17,7 @@ module AtsumoriNb
     # the framework and any gems in your application.
     config.time_zone = 'Tokyo'
     config.i18n.default_locale = :ja
+    # パスを通して、i18nのロケールファイルが読み込まれるようにする
+    config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
   end
 end

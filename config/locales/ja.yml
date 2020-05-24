@@ -14,3 +14,12 @@ ja:
         id_image: ID画像
         sample_image: 着てみたor敷いてみた画像
         category: カテゴリー
+# enum日本語化
+  enum:
+    design:
+      category:
+        clothes: 服
+        road: 道
+        wallpaper: 壁紙
+        floor: 床
+        other: その他
