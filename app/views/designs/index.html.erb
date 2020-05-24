@@ -70,12 +70,12 @@
  	  	  <!-- ID画像 -->
  	  	  <tr class="design-contents-box-tr">
  	  	  	<td class="design-contents-box-td">id_image</td>
- 	  	  	<td class="design-contents-box-td"><%# design.id_image %></td>
- 	  	  </tr>
+ 	  	  	<td class="design-contents-box-td"><%= attachment_image_tag design, :id_image, :fill, 160, 90, format: "jpeg" , fallback: "no_image.jpg", size:"160 x 90" %></td>
  	  	  <!-- サンプル画像 -->
  	  	  <tr class="design-contents-box-tr">
  	  	  	<td class="design-contents-box-td">sample_image</td>
- 	  	  	<td class="design-contents-box-td"><%# design.sample_image %></td>
+ 	  	  	<td class="design-contents-box-td"><%= attachment_image_tag design, :sample_image, :fill, 160, 90, format: "jpeg" %></td>
+ 	  	  </tr>
  	  	  </tr>
  	  	  <!-- ジャンル -->
  	  	  <tr class="design-contents-box-tr">
@@ -91,5 +91,3 @@
  	  </table>
     </div>
   <% end %>
-</div><h1>Designs#index</h1>
-<p>Find me in app/views/designs/index.html.erb</p>

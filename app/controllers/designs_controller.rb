@@ -17,6 +17,6 @@ class DesignsController < ApplicationController
 
   private
   	def design_params
-      params.require(:design).permit(:title, :name, :id_image, :sample_image, :genre, :theme)
+      params.require(:design).permit(:title, :name, :id_image, :sample_image, :category)
     end
 end
