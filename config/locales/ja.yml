@@ -15,7 +15,17 @@ ja:
         sample_image: 着てみたor敷いてみた画像
         category: カテゴリー
 # enum日本語化
+# フォームのセレクトボックス
   enum:
+    design:
+      category:
+        clothes: 服
+        road: 道
+        wallpaper: 壁紙
+        floor: 床
+        other: その他
+# 投稿後の表示
+  enums:
     design:
       category:
         clothes: 服

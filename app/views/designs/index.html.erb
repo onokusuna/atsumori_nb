@@ -69,12 +69,10 @@
  	  	  </tr>
  	  	  <!-- ID画像 -->
  	  	  <tr class="design-contents-box-tr">
- 	  	  	<td class="design-contents-box-td">ID画像</td>
  	  	  	<td class="design-contents-box-td"><%= attachment_image_tag design, :id_image, :fill, 160, 90, format: "jpeg" , fallback: "no_image.jpg", size:"160 x 90" %></td>
  	  	  <!-- サンプル画像 -->
  	  	  <% if design.sample_image.present? %>
  	  	    <tr class="design-contents-box-tr">
- 	  	  	  <td class="design-contents-box-td">着てみたor敷いてみた画像</td>
  	  	  	  <td class="design-contents-box-td"><%= attachment_image_tag design, :sample_image, :fill, 160, 90, format: "jpeg" %></td>
  	  	    </tr>
  	  	  <% end %>
