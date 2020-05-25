@@ -4,7 +4,7 @@ class Design < ApplicationRecord
   validates :id_image, presence: true
   validates :category, presence: true
 
-  has_many :likes
+  has_many :likes, dependent: :destroy
   # gem'refile'用
   attachment :id_image
   attachment :sample_image
