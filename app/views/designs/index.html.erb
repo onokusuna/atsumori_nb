@@ -29,13 +29,13 @@
 	  	  </tr>
 	  	  <!-- ID画像 -->
 	      <tr class="design-contents-form-tr">
-	      	<td class="design-contents-form-td"><%= f.label :id_image %></span></td>
+	      	<td class="design-contents-form-td"><%= f.label :id_image %></td>
 	        <td class="design-contents-form-td"><%= f.attachment_field :id_image %></td>
  	  	  	<td class="design-contents-form-td"></td>
 	      </tr>
 	      <!-- サンプル画像 -->
 	      <tr class="design-contents-form-tr">
-	      	<td class="design-contents-form-td"><%= f.label :sample_image %><span class="design-contents-form-td-span">※任意</td>
+	      	<td class="design-contents-form-td"><%= f.label :sample_image %><span class="design-contents-form-td-span">※任意</span></td>
 	        <td class="design-contents-form-td"><%= f.attachment_field :sample_image %></td>
 	      </tr>
 	      <!-- ジャンル -->
@@ -69,18 +69,20 @@
  	  	  </tr>
  	  	  <!-- ID画像 -->
  	  	  <tr class="design-contents-box-tr">
- 	  	  	<td class="design-contents-box-td">id_image</td>
+ 	  	  	<td class="design-contents-box-td">ID画像</td>
  	  	  	<td class="design-contents-box-td"><%= attachment_image_tag design, :id_image, :fill, 160, 90, format: "jpeg" , fallback: "no_image.jpg", size:"160 x 90" %></td>
  	  	  <!-- サンプル画像 -->
- 	  	  <tr class="design-contents-box-tr">
- 	  	  	<td class="design-contents-box-td">sample_image</td>
- 	  	  	<td class="design-contents-box-td"><%= attachment_image_tag design, :sample_image, :fill, 160, 90, format: "jpeg" %></td>
- 	  	  </tr>
+ 	  	  <% if design.sample_image.present? %>
+ 	  	    <tr class="design-contents-box-tr">
+ 	  	  	  <td class="design-contents-box-td">着てみたor敷いてみた画像</td>
+ 	  	  	  <td class="design-contents-box-td"><%= attachment_image_tag design, :sample_image, :fill, 160, 90, format: "jpeg" %></td>
+ 	  	    </tr>
+ 	  	  <% end %>
  	  	  </tr>
  	  	  <!-- ジャンル -->
  	  	  <tr class="design-contents-box-tr">
  	  	  	<td class="design-contents-box-td">カテゴリー</td>
- 	  	  	<td class="design-contents-box-td"><%= design.category %></td>
+ 	  	  	<td class="design-contents-box-td"><%= design.category_i18n %></td>
  	  	  </tr>
  	  	  <!-- 投稿時間 -->
  	  	  <tr>
@@ -91,3 +93,4 @@
  	  </table>
     </div>
   <% end %>
+</div>
