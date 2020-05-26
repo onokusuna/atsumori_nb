@@ -2,7 +2,7 @@
 <div class="turnip">
   <!-- エラーメッセージ表示 -->
   <% if @turnip.errors.any? %>
-    <p><%= pluralize(@turnip.errors.count,"error", "") %>個のエラーが発生しました</p>
+    <p><%= pluralize(@turnip.errors.count,"error", "") %>個の入力エラーが発生しました</p>
       <ul>
       	<% @turnip.errors.full_messages.each do |msg| %>
       	  <li><%= msg %></li>
@@ -60,10 +60,11 @@
       <!-- 投稿表示 -->
  	  <table class="turnip-contents-box-table">
  	  	<tbody class="turnip-contents-box-tbody">
- 	  	  <!-- 島名 -->
+ 	  	  <!-- 島名・投稿時間 -->
  	  	  <tr class="turnip-contents-box-tr">
  	  	  	<td class="turnip-contents-box-td">島名</td>
  	  	  	<td class="turnip-contents-box-td"><%= turnip.name %>島</td>
+ 	  	  	<td><%= time_ago_in_words(turnip.created_at) %>前</td>
  	  	  </tr>
  	  	  <!-- カブ価 -->
  	  	  <tr class="turnip-contents-box-tr">
@@ -84,11 +85,6 @@
  	  	  <tr class="turnip-contents-box-tr">
  	  	  	<td class="turnip-contents-box-td">求む</td>
  	  	  	<td class="turnip-contents-box-td"><%= turnip.want %></td>
- 	  	  </tr>
- 	  	  <!-- 投稿時間 -->
- 	  	  <tr>
- 	  	  	<td></td>
- 	  	  	<td><%= time_ago_in_words(turnip.created_at) %>前</td>
  	  	  </tr>
  	  	</tbody>
  	  </table>
