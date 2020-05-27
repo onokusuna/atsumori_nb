@@ -2,6 +2,9 @@ class DesignsController < ApplicationController
   def index
   	@designs = Design.all.reverse_order
   	@design = Design.new
+    # ransack
+    @search = Design.ransack(params[:q])
+    @searches = @search.result
   end
 
   def create
