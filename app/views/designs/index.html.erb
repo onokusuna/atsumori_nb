@@ -10,8 +10,9 @@
     <%= f.label :name_cont, "投稿者名" %>
     <%= f.search_field :name_cont %>
     <%= f.label :category_cont, "カテゴリー" %>
-    <%# f.select :category_cont, Design.categories_i18n.keys.map{|k| [I18n.t("enum.design.category.#{k}"), k]} %>
+    <%= f.select :category_cont, Design.categories.map{|k,v| [Design.categories_i18n[k], v]}, {include_blank: true} %>
     <%# f.search_field :category_cont %>
+    <span>並び替え</span>
     <%= f.select( :sorts, { "いいねの多い順": "likes_count desc", "カテゴリー昇順": "category asc", "カテゴリー降順": "category desc", "作成日が新しい順": "id desc", "作成日が古い順": "id asc" }, { onchange: "this.form.submit()"} ) %>
     <%= f.submit "検索" %>
   <% end %>
@@ -70,49 +71,50 @@
   </section>
   <!-- 投稿・検索表示 -->
   <section class="design-contents">
-  <p class="design-contents-p"><%= @designs.count %>件表示</p>
-  <% @designs.each do |design| %>
-    <div class="design-contents-box">
-    <table class="design-contents-box-table">
-      <tbody class="design-contents-box-tbody">
-        <!-- デザイン名・投稿時間 -->
-        <tr class="design-contents-box-tr">
-          <td class="design-contents-box-td">デザイン名</td>
-          <td class="design-contents-box-td"><%= design.title %></td>
-          <td><%= time_ago_in_words(design.created_at) %>前</td>
-        </tr>
-        <!-- 投稿者名 -->
-        <tr class="design-contents-box-tr">
-          <td class="design-contents-box-td">投稿者名</td>
-          <td class="design-contents-box-td"><%= design.name %></td>
-        </tr>
-        <!-- ID画像 tdを横方向に結合 -->
-        <tr class="design-contents-box-tr">
-          <td class="design-contents-box-td" colspan="2"><%= attachment_image_tag design, :id_image, :fill, 160, 90, format: "jpeg" , fallback: "no_image.jpg", size:"160 x 90" %></td>
-        <!-- サンプル画像 tdを横方向に結合 -->
-        <% if design.sample_image.present? %>
-          <tr class="design-contents-box-tr" colspan="2">
-            <td class="design-contents-box-td"><%= attachment_image_tag design, :sample_image, :fill, 160, 90, format: "jpeg" %></td>
-          </tr>
-        <% end %>
-        </tr>
-        <!-- カテゴリー -->
-        <tr class="design-contents-box-tr">
-          <td class="design-contents-box-td">カテゴリー</td>
-          <td class="design-contents-box-td"><%= design.category_i18n %></td>
-        </tr>
-        <!-- いいね -->
-        <tr>
-          <td>
-            <%= link_to design_likes_path(design), method: :post do %>
-            <i class="fas fa-heart" style="color: red;"></i>
+    <p class="design-contents-p"><%= @designs.count %>件表示</p>
+    <% @designs.each do |design| %>
+      <div class="design-contents-box">
+        <table class="design-contents-box-table">
+          <tbody class="design-contents-box-tbody">
+            <!-- デザイン名・投稿時間 -->
+            <tr class="design-contents-box-tr">
+              <td class="design-contents-box-td">デザイン名</td>
+              <td class="design-contents-box-td"><%= design.title %></td>
+              <td><%= time_ago_in_words(design.created_at) %>前</td>
+            </tr>
+            <!-- 投稿者名 -->
+            <tr class="design-contents-box-tr">
+              <td class="design-contents-box-td">投稿者名</td>
+              <td class="design-contents-box-td"><%= design.name %></td>
+            </tr>
+            <!-- ID画像 tdを横方向に結合 -->
+            <tr class="design-contents-box-tr">
+              <td class="design-contents-box-td" colspan="2"><%= attachment_image_tag design, :id_image, :fill, 160, 90, format: "jpeg" , fallback: "no_image.jpg", size:"160 x 90" %></td>
+            </tr>
+            <!-- サンプル画像 tdを横方向に結合 -->
+            <% if design.sample_image.present? %>
+              <tr class="design-contents-box-tr" colspan="2">
+                <td class="design-contents-box-td"><%= attachment_image_tag design, :sample_image, :fill, 160, 90, format: "jpeg" %></td>
+              </tr>
             <% end %>
-            <span class="design-contents-box-td-i-span"><%= design.likes.count %></span> <!-- ※※※cssでcolor:redにする※※※ -->
-          </td>
-        </tr>
-      </tbody>
-    </table>
-    </div>
-  <% end %>
+            </tr>
+            <!-- カテゴリー -->
+            <tr class="design-contents-box-tr">
+              <td class="design-contents-box-td">カテゴリー</td>
+              <td class="design-contents-box-td"><%= design.category_i18n %></td>
+            </tr>
+            <!-- いいね -->
+            <tr>
+              <td>
+                <%= link_to design_likes_path(design), method: :post do %>
+                <i class="fas fa-heart" style="color: red;"></i> <!-- ※※※cssでcolor:redにする※※※ -->
+                <% end %>
+                <span class="design-contents-box-td-i-span"><%= design.likes.count %></span>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    <% end %>
   </section>
 </div>
