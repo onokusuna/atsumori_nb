@@ -2,13 +2,14 @@
 <html>
   <head>
     <meta charset="UTF-8">
+    <!-- <meta name="viewport" content="width=device-width,initial-scale=1.0"> メディアクエリ用-->
     <title>AtsumoriNb</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.0/css/all.css"> <!-- font awesome -->
-    <link rel="stylesheet" href="css/style.css" media="screen"> <!-- メディアクエリ -->
+    <%# favicon_link_tag('favicon.ico') %>
   </head>
 
   <body>

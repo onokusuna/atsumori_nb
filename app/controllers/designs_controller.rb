@@ -1,10 +1,9 @@
 class DesignsController < ApplicationController
   def index
-  	@designs = Design.all.reverse_order
   	@design = Design.new
-    # ransack
+    # 以下ransack検索用
     @search = Design.ransack(params[:q])
-    @searches = @search.result
+    @designs = @search.result.reverse_order
   end
 
   def create
@@ -18,8 +17,18 @@ class DesignsController < ApplicationController
   	end
   end
 
+  def search
+    index
+    render :index
+  end
+
   private
   	def design_params
       params.require(:design).permit(:title, :name, :id_image, :sample_image, :category)
+    end
+
+    def search_params
+      params.require(:q).permit(:sorts, :title, :name, :id_image, :sample_image, :category)
+      # 他のパラメーターもここに入れる
     end
 end
