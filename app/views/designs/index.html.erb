@@ -13,6 +13,7 @@
               <!-- 検索条件：が含まれている場合 -->
               <td class="design-contents-search-td"><%= f.label :name_cont, "投稿者名" %></td>
               <td class="design-contents-search-td"><%= f.search_field :name_cont %></td>
+              <!-- 検索条件：セレクトボックス -->
               <td class="design-contents-search-td"><%= f.label :category_cont, "カテゴリー" %></td>
               <td class="design-contents-search-td"><%= f.select :category_cont, Design.categories.map{|k,v| [Design.categories_i18n[k], v]} %></td>
               <%# f.search_field :category_cont %>
