@@ -2,20 +2,28 @@
 <div class="design">
   <!-- 検索フォーム -->
   <section class="design-contents">
-  <%= search_form_for @search, url: search_designs_path, html: { method: :post } do |f| %>
-    <!-- 検索条件：が含まれている場合 -->
-    <%= f.label :title_cont, "デザイン名" %>
-    <%= f.search_field :title_cont %>
-    <!-- 検索条件：が含まれている場合 -->
-    <%= f.label :name_cont, "投稿者名" %>
-    <%= f.search_field :name_cont %>
-    <%= f.label :category_cont, "カテゴリー" %>
-    <%= f.select :category_cont, Design.categories.map{|k,v| [Design.categories_i18n[k], v]}, {include_blank: true} %>
-    <%# f.search_field :category_cont %>
-    <span>並び替え</span>
-    <%= f.select( :sorts, { "いいねの多い順": "likes_count desc", "カテゴリー昇順": "category asc", "カテゴリー降順": "category desc", "作成日が新しい順": "id desc", "作成日が古い順": "id asc" }, { onchange: "this.form.submit()"} ) %>
-    <%= f.submit "検索" %>
-  <% end %>
+    <div class="design-contents-search">
+      <%= search_form_for @search, url: search_designs_path, html: { method: :post } do |f| %>
+        <table class="design-contents-search-table">
+          <tbody class="design-contents-search-tbody">
+            <tr class="design-contents-search-tr">
+              <!-- 検索条件：が含まれている場合 -->
+              <td class="design-contents-search-td"><%= f.label :title_cont, "デザイン名" %></td>
+              <td class="design-contents-search-td"><%= f.search_field :title_cont %></td>
+              <!-- 検索条件：が含まれている場合 -->
+              <td class="design-contents-search-td"><%= f.label :name_cont, "投稿者名" %></td>
+              <td class="design-contents-search-td"><%= f.search_field :name_cont %></td>
+              <td class="design-contents-search-td"><%= f.label :category_cont, "カテゴリー" %></td>
+              <td class="design-contents-search-td"><%= f.select :category_cont, Design.categories.map{|k,v| [Design.categories_i18n[k], v]} %></td>
+              <%# f.search_field :category_cont %>
+              <td class="design-contents-search-td">並び替え</td>
+              <td class="design-contents-search-td"><%= f.select( :sorts, { "いいねの多い順": "likes_count desc", "カテゴリー昇順": "category asc", "カテゴリー降順": "category desc", "作成日が新しい順": "id desc", "作成日が古い順": "id asc" }, { onchange: "this.form.submit()"} ) %></td>
+              <td class="design-contents-search-td"><%= f.submit "検索" %></td>
+            </tr>
+          </tbody>
+        </table>
+      <% end %>
+    </div>
   </section>
   <!-- エラーメッセージ表示 -->
   <% if @design.errors.any? %>
